@@ -1,0 +1,123 @@
+@header-bg-color: #dde546;
+@header-color: #fff;
+@footer-bg-color: #a1d51c;
+@footer-color: #fff;
+@menu-bg-color: #333;
+@menu-border-color: #666;
+@nav-link-color: #fff;
+@bar-color: @header-color;
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: @header-bg-color;
+    color: @header-color;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    
+    .logo img {
+        height: 50px; 
+    }
+    
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        
+        .menu-icon {
+            display: none; 
+        }
+        
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            
+            li {
+                margin-right: 20px;
+                
+                a {
+                    text-decoration: none;
+                    color: @nav-link-color;
+                }
+            }
+        }
+    }
+}
+
+section {
+    padding: 50px;
+}
+
+footer {
+    background-color: @footer-bg-color;
+    color: @footer-color;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    
+    .proyecto {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: @menu-bg-color;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 0;
+        z-index: 1;
+        
+        li {
+            text-align: center;
+            margin: 0;
+            padding: 15px;
+            border-bottom: 1px solid @menu-border-color;
+        }
+    }
+    
+    .menu-icon {
+        display: block; 
+        cursor: pointer;
+        
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: @bar-color;
+            margin: 5px auto;
+            transition: 0.4s;
+        }
+        
+        .change {
+            .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .nav-links {
+                display: flex;
+            }
+        }
+    }
+    
+    footer {
+        position: relative;
+        bottom: auto;
+    }
+}
